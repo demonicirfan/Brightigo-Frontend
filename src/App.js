@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ChakraProvider, Center } from '@chakra-ui/react';
 import theme from './Theme';
@@ -9,7 +9,7 @@ import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
-import Activate from './Pages/Activate';
+//import Activate from './Pages/Activate';
 import Dashboard from './Pages/Dashboard';
 import AppState from './Context/userAuth-state';
 import { isAuth } from './Helpers/auth';
@@ -21,6 +21,7 @@ export const newTheme = {
   colors: { ...theme.colors, primary: '#ffffff' },
 };
 const App = () => {
+  console.log(isAuth());
   return (
     <AppState>
       <ChakraProvider theme={newTheme}>
@@ -32,7 +33,7 @@ const App = () => {
               isAuth() ? (
                 <Navigate replace to='/dashboard' />
               ) : (
-                <Navigate replace to='/course' />
+                <Navigate replace to='/' />
               )
             }
           />
@@ -40,7 +41,7 @@ const App = () => {
           <Route path='/course' element={<Course />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Signup />} />
-          <Route path='/users/activate/:token' element={<Activate />} />
+          <Route path='/users/activate/:token' element={<Home />} />
           <Route
             path='/dashboard'
             element={

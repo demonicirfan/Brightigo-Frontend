@@ -1,12 +1,6 @@
 import React from 'react';
 import {
-  Box,
-  Flex,
-  Text,
-  Button,
   Stack,
-  Center,
-  Container,
   Tabs,
   TabList,
   TabPanels,
@@ -15,11 +9,24 @@ import {
 } from '@chakra-ui/react';
 import DashboardHome from './Home';
 import Profile from './Profile';
+import TakeTest from './TakeTest';
+import axios from 'axios';
 
 const Dashboard = () => {
   return (
-    <Container w={'full'} maxW={'8xl'}>
-      <Stack direction={{ base: 'column', md: 'row' }} h={'100vh'} w={'full'}>
+    <Stack
+      mb={'10rem'}
+      w={'full'}
+      maxW={'8xl'}
+      mx={'auto'}
+      direction={{ base: 'column', md: 'row' }}
+      justifyContent={'space-between'}
+    >
+      <Stack
+        direction={{ base: 'column', md: 'row' }}
+        h={['auto', 'auto', '100vh']}
+        w={'full'}
+      >
         {/*mobile and tablet displays */}
         <Tabs
           colorScheme={'purple'}
@@ -78,12 +85,13 @@ const Dashboard = () => {
               <Profile />
             </TabPanel>
             <TabPanel>
-              <p>three!</p>
+              <p></p>
             </TabPanel>
           </TabPanels>
         </Tabs>
-      </Stack>
-    </Container>
+      </Stack>{' '}
+      <TakeTest />
+    </Stack>
   );
 };
 

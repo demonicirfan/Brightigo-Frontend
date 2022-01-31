@@ -1,5 +1,4 @@
 import cookie from 'js-cookie';
-import { GoogleLogout } from 'react-google-login';
 
 // Set in Cookie
 export const setCookie = (key, value) => {
@@ -55,6 +54,7 @@ export const isAuth = () => {
     const cookieChecked = getCookie('token');
     if (cookieChecked) {
       if (localStorage.getItem('user')) {
+        console.log(localStorage.getItem('user'));
         return JSON.parse(localStorage.getItem('user'));
       } else {
         return false;

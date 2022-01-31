@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
-import React, { useState, useEffect } from 'react';
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import React, { useState } from 'react';
+
 import {
   FormLabel,
   FormControl,
@@ -10,19 +10,15 @@ import {
   VStack,
   Box,
   useToast,
-  InputRightElement,
-  InputGroup,
 } from '@chakra-ui/react';
-import { Link, useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { isAuth, updateUser } from '../../Helpers/auth';
 import ProfilePicture from './ProfilePicture';
 
 const EditProfile = ({ editMode, setEditMode }) => {
-  const [profilePicture, setProfilePicture] = useState(
-    'https://www.smsffinancial.com.au/wp-content/uploads/2018/09/Avatar-Placeholder.jpg'
-  );
-  const { email, name } = isAuth();
+  const [profilePicture, setProfilePicture] = useState(isAuth().profilePicture);
+  const { _id, phoneNumber, email, name } = isAuth();
   const toast = useToast();
   let navigate = useNavigate();
 
@@ -34,7 +30,7 @@ const EditProfile = ({ editMode, setEditMode }) => {
     defaultValues: {
       name: name,
       email: email,
-      phoneNumber: '',
+      phoneNumber: phoneNumber,
     },
   });
 
@@ -43,36 +39,27 @@ const EditProfile = ({ editMode, setEditMode }) => {
   };
 
   const onSubmit = (data) => {
-    Object.assign(data, { profilePicture: profilePicture });
-    console.log(data);
-    // axios
-    //   .post('/api/123', data)
-    //   .then((res) => {
-    //     toast({
-    //       title: 'Login Successful',
-    //       status: 'success',
-    //       duration: 2000,
-    //     });
-    //     //successfully logedin
-    //     authenticate(res);
-    //     navigate('/dashboard');
-    //   })
-    //   .catch((err) => {
-    //     // setValue({});
-    //     console.log(err);
-    //     if (err.response.data.at == 'password') {
-    //       setError('password', {
-    //         type: 'server',
-    //         message: err.response.data.errors,
-    //       });
-    //     }
-    //     if (err.response.data.at == 'email') {
-    //       setError('email', {
-    //         type: 'server',
-    //         message: err.response.data.errors,
-    //       });
-    //     }
-    //   });
+    Object.assign(data, { _id: _id, profilePicture: profilePicture });
+    console.log('data after data save clicked - ', data);
+    axios
+      .put('https://brightigobackend.herokuapp.com/api/user/update', data)
+      .then((res) => {
+        toast({
+          title: 'Profile Saved Succesfully',
+          status: 'success',
+          duration: 2000,
+        });
+        updateUser(res);
+        setEditMode(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast({
+          title: 'Image too large',
+          status: 'error',
+          duration: 2000,
+        });
+      });
   };
 
   return (

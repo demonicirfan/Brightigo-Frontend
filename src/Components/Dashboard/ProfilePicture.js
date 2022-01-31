@@ -1,12 +1,11 @@
-import { Box, Input, Image,  Center, FormLabel } from '@chakra-ui/react';
+import { Box, Input, Image, Text, Center, FormLabel } from '@chakra-ui/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { TiCamera } from 'react-icons/ti';
 import { useDropzone } from 'react-dropzone';
+import { isAuth } from '../../Helpers/auth';
 
 const ProfilePicture = ({ sendDataToParent }) => {
-  const [image, setImage] = useState(
-    'https://www.smsffinancial.com.au/wp-content/uploads/2018/09/Avatar-Placeholder.jpg'
-  );
+  const [image, setImage] = useState(isAuth().profilePicture);
 
   const onDrop = useCallback((acceptedFiles) => {
     const acceptedFile = acceptedFiles[0];

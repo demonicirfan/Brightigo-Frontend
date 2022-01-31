@@ -42,7 +42,7 @@ const ForgotPassword = () => {
   const onSubmit = (data) => {
     console.log('submit - ' + data);
     axios
-      .post('/api/password/forget', data)
+      .post('https://brightigobackend.herokuapp.com/api/password/forget', data)
       .then((res) => {
         console.log(res);
         toast({

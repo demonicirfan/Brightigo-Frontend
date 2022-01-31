@@ -9,8 +9,8 @@ import {
   VStack,
   useToast,
 } from '@chakra-ui/react';
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
-import { authenticate, isAuth, updateUser } from '../Helpers/auth';
+import { Link,  useNavigate, useParams } from 'react-router-dom';
+import { authenticate } from '../Helpers/auth';
 import axios from 'axios';
 
 const Activate = () => {
@@ -27,12 +27,11 @@ const Activate = () => {
     }
   }, []);
 
-  const { name, theToken, show } = formData;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`/api/activation`, {
+      .post(`https://brightigobackend.herokuapp.com/api/activation`, {
         token,
       })
       .then((res) => {

@@ -20,12 +20,10 @@ import {
   useToast,
   InputRightElement,
   InputGroup,
-  Tooltip,
 } from '@chakra-ui/react';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import axios from 'axios';
-import { authenticate, isAuth, updateUser } from '../Helpers/auth';
-import { TokenExpiredError } from 'jsonwebtoken';
+import { authenticate, isAuth } from '../Helpers/auth';
 
 const AlertPop = (props) => {
   return (
@@ -52,7 +50,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     axios
-      .post('/api/login', data)
+      .post('https://brightigobackend.herokuapp.com/api/login', data)
       .then((res) => {
         toast({
           title: 'Login Successful',

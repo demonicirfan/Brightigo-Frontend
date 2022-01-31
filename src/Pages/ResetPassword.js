@@ -20,7 +20,7 @@ import {
   InputGroup,
   Tooltip,
 } from '@chakra-ui/react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -58,7 +58,9 @@ const Signup = () => {
   const {
     handleSubmit,
     register,
+    setError,
     getValues,
+    reset,
     formState: { errors },
   } = useForm(validationOpt);
 
@@ -78,6 +80,8 @@ const Signup = () => {
         newPassword
     );
   }, []);
+
+  const { resetPasswordLink, newPassword } = formData;
 
   const onSubmit = () => {
     axios

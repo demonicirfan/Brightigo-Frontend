@@ -4,7 +4,9 @@ import { isAuth } from '../../Helpers/auth';
 import EditProfile from './EditProfile';
 
 const NormalProfile = ({ editMode, setEditMode }) => {
-  const { email, name } = isAuth();
+  const { email, name, profilePicture, phoneNumber } = isAuth();
+
+  console.log('profile from normal profile ', profilePicture);
   return (
     <Stack
       mt={'3rem'}
@@ -43,7 +45,7 @@ const NormalProfile = ({ editMode, setEditMode }) => {
             h={{ base: '6rem', md: '8rem' }}
             fit={'cover'}
             alt='user profile'
-            src='https://www.smsffinancial.com.au/wp-content/uploads/2018/09/Avatar-Placeholder.jpg'
+            src={profilePicture}
           />
         </Box>
         <Box
@@ -80,7 +82,7 @@ const NormalProfile = ({ editMode, setEditMode }) => {
         <Box alignSelf={'flex-start'}>
           <Text fontSize={'2xl'}>Phone Number</Text>
           <Text fontSize={'2xl'} textColor={'gray.400'}>
-            +91 600 5293 283
+            {phoneNumber ? phoneNumber : '000 000 000'}
           </Text>
         </Box>
       </VStack>

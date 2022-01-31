@@ -1,8 +1,10 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Center, Text, Heading } from '@chakra-ui/react';
 import React from 'react';
 import LayoutHOC from '../Components/HOC/Layout.HOC';
-import hero1 from '../Images/hero1.jpg';
+import HeroImage from '../Images/hero1.jpg';
 import { useLocation } from 'react-router-dom';
+import Testimonials from '../Components/Testimonials/Testimonials';
+import HowItWorks from '../Components/Home/HowItWorks';
 
 const Home = () => {
   const location = useLocation();
@@ -13,20 +15,29 @@ const Home = () => {
       <LayoutHOC
         title='Take Your Carrier To The Next Level.'
         body='Learn from the best minds in the industry and make yourself ready for the real world of Product Management.'
-        img={hero1}
+        img={HeroImage}
         onClickFunction={() => window.alert('button Clicked from home')}
         button='Take a Test'
       />
-      <Box
-        mt={'2rem'}
-        w={'95vw'}
-        h={'200px'}
-        mx={'auto'}
-        color={'white'}
-        bgColor={'white'}
-        zIndex={'2'}
-        position={'relative'}
-      />
+      <Center bg={'white'} w={'full'}>
+        <Box maxW={'7xl'} mx={'auto'}>
+          <HowItWorks />
+        </Box>
+      </Center>
+      <Box maxW='7xl' mx={'auto'}>
+        <Heading
+          fontSize={{ base: 'xl', md: '6xl' }}
+          fontWeight={'400'}
+          fontFamily={'Playfair Display'}
+        >
+          Success Stories
+        </Heading>
+        <Text mt={'1rem'} maxW={'28em'} fontSize={'xl'}>
+          Build yoru skills by working on real world problems faced by
+          Companies.
+        </Text>
+      </Box>
+      <Testimonials />
     </>
   );
 };
