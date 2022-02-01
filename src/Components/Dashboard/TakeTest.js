@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Center, Box } from '@chakra-ui/react';
+import {  Center, Box } from '@chakra-ui/react';
 import { isAuth } from '../../Helpers/auth';
 
 const TakeTest = () => {

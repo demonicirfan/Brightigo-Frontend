@@ -2,14 +2,12 @@ import { Box, Center, Text, Heading } from '@chakra-ui/react';
 import React from 'react';
 import LayoutHOC from '../Components/HOC/Layout.HOC';
 import HeroImage from '../Images/hero1.jpg';
-import { useLocation } from 'react-router-dom';
 import Testimonials from '../Components/Testimonials/Testimonials';
 import HowItWorks from '../Components/Home/HowItWorks';
+import Brands from '../Components/Home/Brands';
+import Challenges from '../Components/Home/Challenges';
 
 const Home = () => {
-  const location = useLocation();
-  console.log('state - ', location.state);
-
   return (
     <>
       <LayoutHOC
@@ -20,22 +18,38 @@ const Home = () => {
         button='Take a Test'
       />
       <Center bg={'white'} w={'full'}>
+        {' '}
+        <Brands />
+      </Center>
+      <Center bg={'white'} w={'full'}>
         <Box maxW={'7xl'} mx={'auto'}>
           <HowItWorks />
+          <Challenges />
         </Box>
       </Center>
-      <Box maxW='7xl' mx={'auto'}>
-        <Heading
-          fontSize={{ base: 'xl', md: '6xl' }}
-          fontWeight={'400'}
-          fontFamily={'Playfair Display'}
-        >
-          Success Stories
-        </Heading>
-        <Text mt={'1rem'} maxW={'28em'} fontSize={'xl'}>
-          Build yoru skills by working on real world problems faced by
-          Companies.
-        </Text>
+
+      <Box mx={'auto'} maxW='7xl'>
+        <Box w={'fit-content'} mt={'6rem'} ml={'2rem'}>
+          <Heading
+            w={{ base: '60vw', md: '34rem' }}
+            fontSize={{ base: '3xl', md: '5xl' }}
+            alignSelf={'start'}
+            fontWeight={'400'}
+            fontFamily={'Playfair Display'}
+          >
+            Success Stories
+          </Heading>
+          <Text
+            mt={'1rem'}
+            w={{ base: '80vw', md: '34rem' }}
+            fontSize={{ base: 'sm', md: 'md' }}
+            alignSelf={'start'}
+            fontWeight={'400'}
+          >
+            Build yoru skills by working on real world problems faced by
+            Companies.
+          </Text>
+        </Box>
       </Box>
       <Testimonials />
     </>

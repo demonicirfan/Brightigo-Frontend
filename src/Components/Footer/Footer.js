@@ -71,8 +71,11 @@ const Footer = () => {
             w='full'
             justify={'space-evenly'}
           >
-            <VStack alignItems={'flex-start'}>
-              <Heading fontSize={{ base: 'sm', sm: 'md', lg: 'xl' }}>
+            <VStack
+              alignItems={'flex-start'}
+              fontSize={{ base: 'xs', sm: 'md', lg: 'xl' }}
+            >
+              <Heading fontSize={{ base: 'xs', sm: 'md', lg: 'xl' }}>
                 Explore
               </Heading>
               <Text>Instructors</Text>
@@ -81,8 +84,11 @@ const Footer = () => {
               <Text>Why Brightigo</Text>
               <Text>Why Brightigo</Text>
             </VStack>
-            <VStack alignItems={'flex-start'}>
-              <Heading fontSize={{ base: 'sm', lg: 'lg' }}>
+            <VStack
+              alignItems={'flex-start'}
+              fontSize={{ base: 'xs', sm: 'md', lg: 'xl' }}
+            >
+              <Heading fontSize={{ base: 'xs', lg: 'lg' }}>
                 Browse Pages
               </Heading>
               <Text>Syllabus</Text>

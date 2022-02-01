@@ -8,7 +8,7 @@ import {
   Center,
   useMediaQuery,
 } from '@chakra-ui/react';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import { isAuth } from '../../Helpers/auth';
 import { useLocation } from 'react-router';
@@ -27,10 +27,7 @@ const NavBar = (props) => {
   }, [location.key]);
 
   return (
-    <Center
-      bg={'purple.50'}
-      borderBottom={{ base: isOpen ? '3px solid black' : '0', md: '0' }}
-    >
+    <Center bg={'purple.50'}>
       <NavBarContainer {...props}>
         <Center display={{ base: 'none', md: 'block' }}>
           <Logo />
@@ -52,6 +49,7 @@ const NavBar = (props) => {
                 bg: '#FAF5FF',
                 outline: '2px solid #543B99',
                 color: '#543B99',
+                transition: '0.25s',
               }}
             >
               Register
@@ -103,7 +101,14 @@ const MenuToggle = ({ toggle, isOpen }) => {
 const MenuItem = ({ children, isLast, to = '/', ...rest }) => {
   return (
     <Link to={to}>
-      <Text display='block' {...rest}>
+      <Text
+        display='block'
+        {...rest}
+        _hover={{
+          transform: 'scale(1.1)',
+          transition: '0.25s',
+        }}
+      >
         {children}
       </Text>
     </Link>
@@ -151,6 +156,7 @@ const MenuLinks = ({ isOpen, profilePicture, isAuth, isSmallScreen }) => {
                   bg: '#FAF5FF',
                   outline: '2px solid #543B99',
                   color: '#543B99',
+                  transition: '0.25s',
                 }}
               >
                 Register

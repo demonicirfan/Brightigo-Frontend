@@ -14,19 +14,20 @@ import React from 'react';
 const CourseContent = () => {
   return (
     <VStack py={'6rem'}>
-      <Box py={'2rem'} w={'full'}>
+      <Box py={'2rem'} w={'full'} mb={'1rem'}>
         <Text
           alignSelf={'start'}
           pl={'2rem'}
           fontSize={{ base: '28px', md: '42px', lg: '42px' }}
           fontFamily={'Playfair Display'}
+          fontWeight={'500'}
         >
           Course Content
         </Text>
         <Text
           fontWeight={'300'}
           textColor={'gray.500'}
-          pl={'2rem'}
+          pl={{ base: '2rem', md: '2.5rem' }}
           textAlign={'start'}
           alignSelf={'start'}
         >
@@ -61,7 +62,7 @@ const CourseContent = () => {
                 <AccordionIcon />
               </AccordionButton>
             </h2>
-            <AccordionPanel m={'1rem'} pb={4}>
+            <AccordionPanel m={'1rem'} pb={4} textColor={'gray.500'}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -82,7 +83,7 @@ const CourseContent = () => {
                 <AccordionIcon />
               </AccordionButton>
             </h2>
-            <AccordionPanel m={'1rem'} pb={4}>
+            <AccordionPanel m={'1rem'} pb={4} textColor={'gray.500'}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -103,7 +104,7 @@ const CourseContent = () => {
                 <AccordionIcon />
               </AccordionButton>
             </h2>
-            <AccordionPanel m={'1rem'} pb={4}>
+            <AccordionPanel m={'1rem'} pb={4} textColor={'gray.500'}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -125,7 +126,7 @@ const CourseContent = () => {
                 <AccordionIcon />
               </AccordionButton>
             </h2>
-            <AccordionPanel m={'1rem'} pb={4}>
+            <AccordionPanel m={'1rem'} pb={4} textColor={'gray.500'}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -146,7 +147,7 @@ const CourseContent = () => {
                 <AccordionIcon />
               </AccordionButton>
             </h2>
-            <AccordionPanel m={'1rem'} pb={4}>
+            <AccordionPanel m={'1rem'} pb={4} textColor={'gray.500'}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -167,7 +168,7 @@ const CourseContent = () => {
                 <AccordionIcon />
               </AccordionButton>
             </h2>
-            <AccordionPanel m={'1rem'} pb={4}>
+            <AccordionPanel m={'1rem'} pb={4} textColor={'gray.500'}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris

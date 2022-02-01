@@ -1,12 +1,4 @@
-import {
-  Center,
-  Flex,
-  Heading,
-  HStack,
-  Image,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
+import { Center, Flex, HStack, Image, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
 import icon1 from '../../Images/Icons/icon1.jpg';
 import icon2 from '../../Images/Icons/icon2.jpg';
@@ -23,6 +15,7 @@ const CourseHighlight = () => {
         p={'2rem'}
         fontSize={{ base: '28px', md: '42px', lg: '42px' }}
         fontFamily={'Playfair Display'}
+        fontWeight={'500'}
       >
         Course Highlight
       </Text>
@@ -31,8 +24,8 @@ const CourseHighlight = () => {
         flexDirection={'column'}
         alignItems={'center'}
         gap={'1rem'}
-        fontSize={{ base: 'sm', md: 'md' }}
-        px={'1rem'}
+        fontSize={{ base: '10px', md: 'md' }}
+        px={'0.5rem'}
       >
         <HStack
           justifyContent={'space-around'}
@@ -40,7 +33,7 @@ const CourseHighlight = () => {
           w={'full'}
         >
           <Center
-            margin={{ base: '1rem', md: '1rem', lg: '2rem' }}
+            margin={{ base: '0rem', md: '1rem', lg: '2rem' }}
             flexDirection={'column'}
           >
             <Image
@@ -58,7 +51,7 @@ const CourseHighlight = () => {
             </Text>
           </Center>
           <Center
-            margin={{ base: '1rem', md: '1rem', lg: '2rem' }}
+            margin={{ base: '0rem', md: '1rem', lg: '2rem' }}
             flexDirection={'column'}
           >
             <Image
@@ -76,7 +69,7 @@ const CourseHighlight = () => {
             </Text>
           </Center>
           <Center
-            margin={{ base: '1rem', md: '1rem', lg: '2rem' }}
+            margin={{ base: '0rem', md: '1rem', lg: '2rem' }}
             flexDirection={'column'}
           >
             <Image
@@ -100,7 +93,7 @@ const CourseHighlight = () => {
           w={'full'}
         >
           <Center
-            margin={{ base: '1rem', md: '1rem', lg: '2rem' }}
+            margin={{ base: '0rem', md: '1rem', lg: '2rem' }}
             flexDirection={'column'}
           >
             <Image
@@ -118,7 +111,7 @@ const CourseHighlight = () => {
             </Text>
           </Center>
           <Center
-            margin={{ base: '1rem', md: '1rem', lg: '2rem' }}
+            margin={{ base: '0rem', md: '1rem', lg: '2rem' }}
             flexDirection={'column'}
           >
             <Image
@@ -136,7 +129,7 @@ const CourseHighlight = () => {
             </Text>
           </Center>
           <Center
-            margin={{ base: '1rem', md: '1rem', lg: '2rem' }}
+            margin={{ base: '0rem', md: '1rem', lg: '2rem' }}
             flexDirection={'column'}
           >
             <Image

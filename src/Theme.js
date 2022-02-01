@@ -26,6 +26,7 @@ const theme = extendTheme({
       'html, body': {
         background: 'purple.50',
         color: 'purple.900',
+        overflowX: 'hidden',
       },
     },
   },

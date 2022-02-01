@@ -1,4 +1,4 @@
-import { Box, Input, Image, Text, Center, FormLabel } from '@chakra-ui/react';
+import { Box, Input, Image,  Center, FormLabel } from '@chakra-ui/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { TiCamera } from 'react-icons/ti';
 import { useDropzone } from 'react-dropzone';
@@ -27,7 +27,7 @@ const ProfilePicture = ({ sendDataToParent }) => {
   });
 
   return (
-    <Box bg={'transparent'} rounded={'full'}>
+    <Box bg={'transparent'} rounded={'full'} border={'1px solid #44337a'}>
       <FormLabel
         for='file'
         position={'absolute'}
@@ -36,7 +36,7 @@ const ProfilePicture = ({ sendDataToParent }) => {
         h={{ base: '6rem', md: '8rem' }}
         rounded={'full'}
         bg={'#ffffff70'}
-        opacity={'0'}
+        opacity={'0.4'}
         _hover={{
           opacity: 1,
           transition: 'all .3s ease',
@@ -49,7 +49,7 @@ const ProfilePicture = ({ sendDataToParent }) => {
           w={{ base: '6rem', md: '8rem' }}
           h={{ base: '6rem', md: '8rem' }}
         >
-          <TiCamera size={40} />
+          <TiCamera size={40} color='#44337a' />
         </Center>
       </FormLabel>
 
@@ -58,7 +58,6 @@ const ProfilePicture = ({ sendDataToParent }) => {
         w={{ base: '6rem', md: '8rem' }}
         h={{ base: '6rem', md: '8rem' }}
         fit={'cover'}
-        alt='user profile'
         src={image}
       />
     </Box>

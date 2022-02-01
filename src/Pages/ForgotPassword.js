@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   FormLabel,
   FormControl,
@@ -42,7 +42,7 @@ const ForgotPassword = () => {
   const onSubmit = (data) => {
     console.log('submit - ' + data);
     axios
-      .post('https://brightigobackend.herokuapp.com/api/password/forget', data)
+      .post(`${process.env.REACT_APP_BACKEND}/api/password/forget`, data)
       .then((res) => {
         console.log(res);
         toast({
@@ -62,6 +62,7 @@ const ForgotPassword = () => {
 
   return (
     <Container
+      mb={'6rem'}
       w={'80vw'}
       maxW={'xl'}
       minW={'fit-content'}

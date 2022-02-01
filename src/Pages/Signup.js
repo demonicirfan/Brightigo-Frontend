@@ -51,7 +51,7 @@ const Signup = () => {
 
   const googleSuccess = (tokenId) => {
     axios
-      .post('https://brightigobackend.herokuapp.com/api/googlelogin', {
+      .post(`${process.env.REACT_APP_BACKEND}/api/googlelogin`, {
         idToken: tokenId.tokenId,
       })
       .then((res) => {
@@ -83,8 +83,9 @@ const Signup = () => {
   };
 
   const onSubmit = (data) => {
+    console.log(data);
     axios
-      .post('/api/register', data)
+      .post(`${process.env.REACT_APP_BACKEND}/api/register`, data)
       .then((res) => {
         //setValue({});
         toast({
@@ -112,6 +113,7 @@ const Signup = () => {
 
   return (
     <Container
+      mb={'6rem'}
       w={'80vw'}
       maxW={'xl'}
       minW={'fit-content'}
@@ -291,7 +293,12 @@ const Signup = () => {
         <Text fontSize={'sm'} py={'1rem'}>
           {' '}
           Already Have an account{' '}
-          <Text as='span' textColor={'blue.400'} fontWeight={'500'}>
+          <Text
+            as='span'
+            textColor={'blue.400'}
+            fontWeight={'500'}
+            _hover={{ textDecoration: 'underline' }}
+          >
             <Link to='/login'>Login</Link>
           </Text>{' '}
         </Text>

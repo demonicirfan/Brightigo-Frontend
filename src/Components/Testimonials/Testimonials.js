@@ -6,27 +6,34 @@ import '../../Styles/slick.css';
 const settings = {
   centerMode: true,
   centerPadding: '60px',
+  dots: false,
+  infinite: true,
   slidesToShow: 3,
-  autoPlay: true,
-  autoPlaySpeed: 3000,
-  speed: 1500,
-  index: 2,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
   responsive: [
+    {
+      breakpoint: 1450,
+      settings: {
+        centerMode: false,
+        centerPadding: '0px',
+        slidesToShow: 1,
+      },
+    },
     {
       breakpoint: 768,
       settings: {
-        arrows: false,
         centerMode: true,
-        centerPadding: '40px',
+        centerPadding: '0px',
         slidesToShow: 1,
       },
     },
     {
       breakpoint: 480,
       settings: {
-        arrows: false,
         centerMode: true,
-        centerPadding: '10px',
+        centerPadding: '0px',
         slidesToShow: 1,
       },
     },
@@ -62,7 +69,7 @@ export default function CaptionCarousel() {
   ];
 
   return (
-    <Box my={'8rem'}>
+    <Box h={{ base: '42rem', md: '50rem' }}>
       {/* CSS files for react-slick */}
       <link
         rel='stylesheet'
@@ -78,30 +85,29 @@ export default function CaptionCarousel() {
       <Slider {...settings}>
         {cards.map((item, index) => (
           <Center
-            px={'5rem'}
+            px={{ base: '1rem', md: '2rem' }}
+            my={'10rem'}
             key={index}
             bg={'transparent'}
             mx={'auto'}
             _before={{
               content: `""`,
               position: 'absolute',
-              top: 'clamp(50px, 80vw, 66vh)',
               width: '180px',
               height: '180px',
               background: '#44337A',
               filter: 'blur(80px)',
               zIndex: '-1',
-              transform: 'translateX(10px)',
+              transform: 'translate(-60px,150px)',
             }}
           >
             <VStack
-              minH={'25rem'}
+              minH={{ base: '20rem', md: '25rem' }}
               bg={'white'}
               m={{ base: '1rem', lg: '2rem' }}
-              w={'fit-content'}
-              px={'5rem'}
+              w={'90%'}
+              px={{ base: '1rem', md: '5rem' }}
               py={'2rem'}
-              m={'auto'}
             >
               <Avatar
                 name={item.name}
@@ -112,8 +118,8 @@ export default function CaptionCarousel() {
               <Text
                 textColor={'purple.900'}
                 textAlign={'center'}
-                maxW={{ base: '40vw', md: '30rem' }}
-                fontSize={{ base: '8px', lg: 'sm' }}
+                px={'1rem'}
+                fontSize={{ base: '12px', lg: 'sm' }}
               >
                 "{item.body}"
               </Text>

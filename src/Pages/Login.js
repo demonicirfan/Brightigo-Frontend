@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { FcGoogle } from 'react-icons/fc';
 import { GoogleLogin } from 'react-google-login';
@@ -50,7 +50,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     axios
-      .post('https://brightigobackend.herokuapp.com/api/login', data)
+      .post(`${process.env.REACT_APP_BACKEND}/api/login`, data)
       .then((res) => {
         toast({
           title: 'Login Successful',
@@ -59,7 +59,7 @@ const Login = () => {
         });
         //successfully logedin
         authenticate(res);
-        navigate('/dashboard');
+        navigate.push('/dashboard');
       })
       .catch((err) => {
         // setValue({});
@@ -80,8 +80,9 @@ const Login = () => {
   };
 
   const googleSuccess = (tokenId) => {
+    console.log(tokenId.tokenId);
     axios
-      .post('/api/googlelogin', {
+      .post(`${process.env.REACT_APP_BACKEND}/api/googlelogin`, {
         idToken: tokenId.tokenId,
       })
       .then((res) => {
@@ -110,6 +111,7 @@ const Login = () => {
 
   return (
     <Container
+      mb={'6rem'}
       w={'80vw'}
       maxW={'xl'}
       minW={'fit-content'}
@@ -128,7 +130,7 @@ const Login = () => {
           </Heading>
           <Center py={[2, 2, 4]} w={'full'}>
             <GoogleLogin
-              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+              clientId='185902963184-6ojahsp82t3sbs7j1r2nll8r54g5uv61.apps.googleusercontent.com'
               onSuccess={googleSuccess}
               onFailure={googleFailure}
               cookiePolicy={'single_host_origin'}
@@ -249,9 +251,26 @@ const Login = () => {
           </Button>
         </form>
         <Link to='/users/password/forget'>
-          <Text fontSize={'sm'} py={'1rem'}>
+          <Text
+            fontSize={'sm'}
+            py={'1rem'}
+            _hover={{ textDecoration: 'underline' }}
+          >
             {' '}
             Forgot Password{' '}
+          </Text>
+        </Link>
+
+        <Link to='/register'>
+          <Text fontSize={'md'} py={'1rem'}>
+            Dont have an acount{' '}
+            <Text
+              as='span'
+              textColor={'blue.500'}
+              _hover={{ textDecoration: 'underline' }}
+            >
+              SignUp
+            </Text>
           </Text>
         </Link>
       </VStack>

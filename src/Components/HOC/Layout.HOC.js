@@ -1,7 +1,6 @@
 import {
   Button,
   Box,
-  Center,
   Container,
   Flex,
   Heading,
@@ -9,17 +8,19 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import ImageHOC from './Img.HOC';
 
 const LayoutHOC = (props) => {
+  const navigate = useNavigate();
   const onClickHandler = () => {
-    props.onClickFunction();
+    navigate('/login');
   };
 
   return (
-    <Container maxW='8xl' centerContent>
+    <Container maxW='8xl' centerContent pb={{ base: '4rem', xl: '0' }}>
       <Flex
-        flexDirection={{ base: 'column-reverse', lg: 'row' }}
+        flexDirection={{ base: 'column-reverse', xl: 'row' }}
         gap={'10vw'}
         alignItems={'center'}
       >
@@ -52,6 +53,7 @@ const LayoutHOC = (props) => {
               bg: '#FAF5FF',
               outline: '2px solid #543B99',
               color: '#543B99',
+              transition: '0.25s',
             }}
           >
             {props.button}

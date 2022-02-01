@@ -10,7 +10,6 @@ import {
 import DashboardHome from './Home';
 import Profile from './Profile';
 import TakeTest from './TakeTest';
-import axios from 'axios';
 
 const Dashboard = () => {
   return (

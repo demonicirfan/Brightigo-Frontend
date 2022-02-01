@@ -9,7 +9,7 @@ import {
   VStack,
   useToast,
 } from '@chakra-ui/react';
-import { Link,  useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { authenticate } from '../Helpers/auth';
 import axios from 'axios';
 
@@ -27,11 +27,10 @@ const Activate = () => {
     }
   }, []);
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`https://brightigobackend.herokuapp.com/api/activation`, {
+      .post(`${process.env.REACT_APP_BACKEND}/api/activation`, {
         token,
       })
       .then((res) => {
@@ -59,6 +58,7 @@ const Activate = () => {
 
   return (
     <Container
+      mb={'6rem'}
       w={'80vw'}
       maxW={'xl'}
       minW={'fit-content'}

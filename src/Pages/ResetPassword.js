@@ -24,6 +24,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { isAuth } from '../Helpers/auth';
 
 const AlertPop = (props) => {
   return (
@@ -85,7 +86,7 @@ const Signup = () => {
 
   const onSubmit = () => {
     axios
-      .put(`/api/password/reset`, {
+      .put(`${process.env.REACT_APP_BACKEND}/api/password/reset`, {
         formData,
       })
       .then((res) => {
@@ -122,8 +123,13 @@ const Signup = () => {
       borderBottom={'3px solid'}
       borderColor={'purple.800'}
     >
-      {/* {isAuth() ? <Navigate replace to='/' /> : null}*/}
-      <VStack p={['1rem', '1rem', '2rem']} pb={'4rem'} bgColor={'#fefbff'}>
+      {isAuth() ? <Navigate replace to='/' /> : null}
+      <VStack
+        mb={'6rem'}
+        p={['1rem', '1rem', '2rem']}
+        pb={'4rem'}
+        bgColor={'#fefbff'}
+      >
         <Center my={'1rem'} flexDirection={'column'}>
           <Heading fontWeight={'400'} mb={'0.5rem'} letterSpacing={'wider'}>
             Reset Password
@@ -236,7 +242,6 @@ const Signup = () => {
               bg: '#543B99',
               color: 'white',
             }}
-            //     isLoading={isSubmitting}
           >
             Save
           </Button>

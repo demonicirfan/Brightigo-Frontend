@@ -11,7 +11,6 @@ import {
   Box,
   useToast,
 } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { isAuth, updateUser } from '../../Helpers/auth';
 import ProfilePicture from './ProfilePicture';
@@ -20,7 +19,6 @@ const EditProfile = ({ editMode, setEditMode }) => {
   const [profilePicture, setProfilePicture] = useState(isAuth().profilePicture);
   const { _id, phoneNumber, email, name } = isAuth();
   const toast = useToast();
-  let navigate = useNavigate();
 
   const {
     handleSubmit,
@@ -42,7 +40,7 @@ const EditProfile = ({ editMode, setEditMode }) => {
     Object.assign(data, { _id: _id, profilePicture: profilePicture });
     console.log('data after data save clicked - ', data);
     axios
-      .put('https://brightigobackend.herokuapp.com/api/user/update', data)
+      .put(`${process.env.REACT_APP_BACKEND}/api/user/update`, data)
       .then((res) => {
         toast({
           title: 'Profile Saved Succesfully',
