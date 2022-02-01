@@ -93,7 +93,8 @@ const Login = () => {
         });
         //successfully logedin
         authenticate(res);
-        navigate('/dashboard');
+        window.location.replace('https://brightigo.xyz');
+        navigate('/');
       })
       .catch((err) => {
         console.log(err);

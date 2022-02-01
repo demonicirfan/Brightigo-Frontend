@@ -13,7 +13,7 @@ const Course = () => {
         body='Learn from the best minds in the industry and make yourself ready for the real world of Product Management.'
         img={HeroImage}
         onClickFunction={() => window.alert('button Clicked from course page')}
-        button='Apply Now'
+        button='Take Test'
       />
       <Box bg={'white'} w={'full'}>
         <Box maxW={'6xl'} mx={'auto'} bg={'white'} py={'5rem'} mt={'3rem'}>

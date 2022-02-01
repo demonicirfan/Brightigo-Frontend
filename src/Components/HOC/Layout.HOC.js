@@ -10,13 +10,21 @@ import {
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ImageHOC from './Img.HOC';
-
+import { isAuth } from '../../Helpers/auth';
 const LayoutHOC = (props) => {
   const navigate = useNavigate();
-  const onClickHandler = () => {
+  console.log('isauth - ', !!isAuth());
+  const onClickWithIsAuthFalse = () => {
+    console.log('is false');
     navigate('/login');
   };
-
+  const onClickWithIsAuthTrue = () => {
+    console.log('is true');
+    window.location.replace(`https://quizzs.vercel.app/${isAuth()?._id}`);
+  };
+  const onClickHandler = () => {
+    !!isAuth() ? onClickWithIsAuthTrue() : onClickWithIsAuthFalse();
+  };
   return (
     <Container maxW='8xl' centerContent pb={{ base: '4rem', xl: '0' }}>
       <Flex

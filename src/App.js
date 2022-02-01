@@ -21,7 +21,6 @@ export const newTheme = {
   colors: { ...theme.colors, primary: '#ffffff' },
 };
 const App = () => {
-  console.log(isAuth());
   return (
     <AppState>
       <ChakraProvider theme={newTheme}>
