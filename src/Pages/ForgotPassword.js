@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FormLabel,
   FormControl,
@@ -30,16 +30,18 @@ const AlertPop = (props) => {
 };
 
 const ForgotPassword = () => {
+  const [loader, setloader] = useState(false);
   const toast = useToast();
 
   const {
     handleSubmit,
     register,
     setError,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
+    setloader(true);
     console.log('submit - ' + data);
     axios
       .post(`${process.env.REACT_APP_BACKEND}/api/password/forget`, data)
@@ -50,6 +52,7 @@ const ForgotPassword = () => {
           status: 'success',
           duration: 4000,
         });
+        setloader(false);
       })
       .catch((err) => {
         console.log(err);
@@ -57,6 +60,7 @@ const ForgotPassword = () => {
           type: 'server',
           message: err,
         });
+        setloader(false);
       });
   };
 
@@ -128,7 +132,7 @@ const ForgotPassword = () => {
               bg: '#543B99',
               color: 'white',
             }}
-            isLoading={isSubmitting}
+            isLoading={loader}
           >
             Get Reset Link
           </Button>

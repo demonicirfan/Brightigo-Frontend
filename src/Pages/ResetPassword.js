@@ -20,9 +20,7 @@ import {
   InputGroup,
   Tooltip,
 } from '@chakra-ui/react';
-import { Link, Navigate, useParams } from 'react-router-dom';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { isAuth } from '../Helpers/auth';
 
@@ -38,86 +36,54 @@ const AlertPop = (props) => {
 };
 
 const Signup = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    resetPasswordLink: '',
-    newPassword: '',
-  });
   let params = useParams();
+  const [loader, setLoader] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
-
-  const formSchema = Yup.object().shape({
-    password: Yup.string()
-      .required('Password is required')
-      .min(8, 'Password length should be at least 8 characters'),
-    passwordConfirm: Yup.string()
-      .required('Confirm Password is required')
-      .oneOf([Yup.ref('password')], 'Passwords must and should match'),
-  });
-
-  const validationOpt = { resolver: yupResolver(formSchema) };
   const {
-    handleSubmit,
     register,
-    setError,
-    getValues,
-    reset,
+    handleSubmit,
     formState: { errors },
-  } = useForm(validationOpt);
+  } = useForm();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log(getValues('password'));
-    const resetPasswordLink = params.token;
-    let { newPassword } = getValues('password');
-
-    if (resetPasswordLink) {
-      setFormData({ resetPasswordLink, newPassword });
-    }
-
-    console.log(
-      'resetPasswordLink - ' +
-        resetPasswordLink +
-        ' newPassword - ' +
-        newPassword
-    );
-  }, []);
-
-  const { resetPasswordLink, newPassword } = formData;
-
-  const onSubmit = () => {
+  const onSubmit = (data) => {
+    setLoader(true);
     axios
       .put(`${process.env.REACT_APP_BACKEND}/api/password/reset`, {
-        formData,
+        resetPasswordLink: params.token,
+        newPassword: data.password,
       })
       .then((res) => {
-        setFormData({
-          ...formData,
-          show: false,
-        });
         console.log(res);
         toast({
           title: res.data.message,
           status: 'success',
-          duration: 2000,
+          duration: 4000,
         });
+        setLoader(false);
+        navigate('/login');
       })
       .catch((err) => {
         console.log('error is ' + err);
         toast({
-          title: err.response.data.errors,
+          title: err.response.data.error,
           status: 'error',
-          duration: 5000,
+          duration: 4000,
         });
+        setLoader(false);
       });
   };
 
   return (
     <Container
+      mb={'8rem'}
       w={'80vw'}
       maxW={'xl'}
       minW={'fit-content'}
       px={['2rem', '2rem', '3rem', '5rem']}
       py={'2rem'}
+      pb={'0'}
       mx={'auto'}
       bgColor={'#fefbff'}
       borderBottom={'3px solid'}
@@ -200,7 +166,7 @@ const Signup = () => {
                 size={'lg'}
                 type={showPassword ? 'text' : 'password'}
                 placeholder='Confirm Password'
-                {...register('passwordConfirm')}
+                {...register('confirmPassword')}
               />
               <InputRightElement>
                 <Box
@@ -242,6 +208,7 @@ const Signup = () => {
               bg: '#543B99',
               color: 'white',
             }}
+            isLoading={loader}
           >
             Save
           </Button>

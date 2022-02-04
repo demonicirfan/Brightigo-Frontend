@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import jwt from 'jsonwebtoken';
 import {
   Heading,
   Text,
@@ -12,23 +11,26 @@ import {
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { authenticate } from '../Helpers/auth';
 import axios from 'axios';
+//import jwt from 'jsonwebtoken';
 
 const Activate = () => {
-  const [formData, setFormData] = useState({ name: '', token: '', show: true });
+  const [formData, setFormData] = useState({ token: '', show: true });
+  const [loader, setloader] = useState(false);
   const navigate = useNavigate();
   const toast = useToast();
   let { token } = useParams();
 
   useEffect(() => {
     const theToken = token;
-    let { name } = jwt.decode(token);
+    // let { name } = jwt.decode(token);
     if (theToken) {
-      setFormData({ ...formData, name, theToken });
+      setFormData({ ...formData, theToken });
     }
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setloader(true);
     axios
       .post(`${process.env.REACT_APP_BACKEND}/api/activation`, {
         token,
@@ -54,6 +56,7 @@ const Activate = () => {
           duration: 5000,
         });
       });
+    setloader(false);
   };
 
   return (
@@ -95,7 +98,7 @@ const Activate = () => {
               bg: '#543B99',
               color: 'white',
             }}
-            //  isLoading={isSubmitting}
+            isLoading={loader}
           >
             Activate your Account
           </Button>

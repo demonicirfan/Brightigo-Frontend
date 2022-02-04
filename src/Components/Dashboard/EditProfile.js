@@ -16,6 +16,7 @@ import { isAuth, updateUser } from '../../Helpers/auth';
 import ProfilePicture from './ProfilePicture';
 
 const EditProfile = ({ editMode, setEditMode }) => {
+  const [loader, setLoader] = useState(false);
   const [profilePicture, setProfilePicture] = useState(isAuth().profilePicture);
   const { _id, phoneNumber, email, name } = isAuth();
   const toast = useToast();
@@ -37,6 +38,7 @@ const EditProfile = ({ editMode, setEditMode }) => {
   };
 
   const onSubmit = (data) => {
+    setLoader(true);
     Object.assign(data, { _id: _id, profilePicture: profilePicture });
     console.log('data after data save clicked - ', data);
     axios
@@ -58,6 +60,7 @@ const EditProfile = ({ editMode, setEditMode }) => {
           duration: 2000,
         });
       });
+    setLoader(false);
   };
 
   return (
@@ -174,7 +177,7 @@ const EditProfile = ({ editMode, setEditMode }) => {
               bg: '#543B99',
               color: 'white',
             }}
-            isLoading={isSubmitting}
+            isLoading={loader}
           >
             Save Changes
           </Button>

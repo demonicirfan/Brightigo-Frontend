@@ -39,6 +39,8 @@ const AlertPop = (props) => {
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const [googleLoader, setGoogleLoader] = useState(false);
   const toast = useToast();
   let navigate = useNavigate();
 
@@ -50,6 +52,7 @@ const Signup = () => {
   } = useForm({ defaultValues: { email: '' } });
 
   const googleSuccess = (tokenId) => {
+    setGoogleLoader(true);
     axios
       .post(`${process.env.REACT_APP_BACKEND}/api/googlelogin`, {
         idToken: tokenId.tokenId,
@@ -72,17 +75,22 @@ const Signup = () => {
           duration: 3000,
         });
       });
+    //setGoogleLoader(false);
   };
 
   const googleFailure = async (response) => {
+    setGoogleLoader(true);
+
     toast({
       title: 'Google Signup Failure',
       status: 'error',
       duration: 3000,
     });
+    setGoogleLoader(false);
   };
 
   const onSubmit = (data) => {
+    setLoader(true);
     console.log(data);
     axios
       .post(`${process.env.REACT_APP_BACKEND}/api/register`, data)
@@ -91,9 +99,9 @@ const Signup = () => {
         toast({
           title: res.data.message,
           status: 'success',
-          duration: 2000,
+          duration: 4000,
         });
-
+        setLoader(false);
         // on signup send message and redirect to login page
         navigate('/login');
       })
@@ -108,6 +116,7 @@ const Signup = () => {
           status: 'error',
           duration: 2000,
         });
+        setLoader(false);
       });
   };
 
@@ -151,6 +160,7 @@ const Signup = () => {
                     bgColor: 'gray.100',
                   }}
                   onClick={renderProps.onClick}
+                  isLoading={googleLoader}
                 >
                   <Center
                     fontWeight={'500'}
@@ -284,9 +294,8 @@ const Signup = () => {
               bg: '#543B99',
               color: 'white',
             }}
-            isLoading={isSubmitting}
+            isLoading={loader}
           >
-            {isSubmitting && <Text>Submitting</Text>}
             Get Started
           </Button>
         </form>

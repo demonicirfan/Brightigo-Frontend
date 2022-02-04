@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import React from 'react';
+import React, { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { FcGoogle } from 'react-icons/fc';
 import { GoogleLogin } from 'react-google-login';
@@ -37,7 +37,9 @@ const AlertPop = (props) => {
 };
 
 const Login = () => {
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [loader, setLoader] = useState(false);
+  const [loaderGoogle, setLoaderGoogle] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
   let navigate = useNavigate();
 
@@ -49,17 +51,20 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    setLoader(true);
     axios
       .post(`${process.env.REACT_APP_BACKEND}/api/login`, data)
       .then((res) => {
         toast({
           title: 'Login Successful',
           status: 'success',
-          duration: 2000,
+          duration: 3000,
         });
+
         //successfully logedin
         authenticate(res);
-        navigate.push('/dashboard');
+        //setLoader(false);
+        navigate('/');
       })
       .catch((err) => {
         // setValue({});
@@ -69,17 +74,21 @@ const Login = () => {
             type: 'server',
             message: err.response.data.errors,
           });
+          setLoader(false);
         }
         if (err.response.data.at == 'email') {
           setError('email', {
             type: 'server',
             message: err.response.data.errors,
           });
+          setLoader(false);
         }
       });
+    setLoader(false);
   };
 
   const googleSuccess = (tokenId) => {
+    setLoaderGoogle(true);
     console.log(tokenId.tokenId);
     axios
       .post(`${process.env.REACT_APP_BACKEND}/api/googlelogin`, {
@@ -91,9 +100,10 @@ const Login = () => {
           status: 'success',
           duration: 3000,
         });
+        setLoaderGoogle(false);
         //successfully logedin
         authenticate(res);
-        window.location.replace('https://brightigo.xyz');
+        //window.location.replace('https://brightigo.xyz');
         navigate('/');
       })
       .catch((err) => {
@@ -103,6 +113,7 @@ const Login = () => {
           status: 'error',
           duration: 3000,
         });
+        setLoaderGoogle(false);
       });
   };
 
@@ -150,6 +161,7 @@ const Login = () => {
                     bgColor: 'gray.100',
                   }}
                   onClick={renderProps.onClick}
+                  isLoading={loaderGoogle}
                 >
                   <Center
                     fontWeight={'500'}
@@ -246,7 +258,7 @@ const Login = () => {
               bg: '#543B99',
               color: 'white',
             }}
-            isLoading={isSubmitting}
+            isLoading={loader}
           >
             Login
           </Button>
