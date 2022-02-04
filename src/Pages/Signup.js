@@ -76,7 +76,7 @@ const Signup = () => {
 
   const googleFailure = async (response) => {
     toast({
-      title: 'Google Failure',
+      title: 'Google Signup Failure',
       status: 'error',
       duration: 3000,
     });
@@ -98,13 +98,13 @@ const Signup = () => {
         navigate('/login');
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data);
         setError('email', {
           type: 'server',
-          message: err.message,
+          message: err.response.data.message,
         });
         toast({
-          title: err.message,
+          title: err.response.data.message,
           status: 'error',
           duration: 2000,
         });

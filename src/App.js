@@ -9,7 +9,7 @@ import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
-//import Activate from './Pages/Activate';
+import Activate from './Pages/Activate';
 import Dashboard from './Pages/Dashboard';
 import AppState from './Context/userAuth-state';
 import { isAuth } from './Helpers/auth';
@@ -40,7 +40,7 @@ const App = () => {
           <Route path='/course' element={<Course />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Signup />} />
-          <Route path='/users/activate/:token' element={<Home />} />
+          <Route path='/users/activate/:token' element={<Activate />} />
           <Route
             path='/dashboard'
             element={
