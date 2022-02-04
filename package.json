@@ -2,7 +2,7 @@
   "name": "client2",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000",
+  "proxy": "https://brightigobackend.herokuapp.com",
   "dependencies": {
     "@chakra-ui/icons": "^1.1.1",
     "@chakra-ui/react": "^1.8.1",
