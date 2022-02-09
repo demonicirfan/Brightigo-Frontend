@@ -1,6 +1,5 @@
 import { extendTheme } from '@chakra-ui/react';
-import '@fontsource/playfair-display';
-import '@fontsource/work-sans';
+import '@fontsource/poppins';
 
 const config = {
   initialColorMode: 'light',
@@ -19,7 +18,7 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    body: 'Work Sans',
+    body: 'Poppins',
   },
   styles: {
     global: {

@@ -26,24 +26,25 @@ const LayoutHOC = (props) => {
     !!isAuth() ? onClickWithIsAuthTrue() : onClickWithIsAuthFalse();
   };
   return (
-    <Container maxW='8xl' centerContent pb={{ base: '4rem', xl: '0' }}>
+    <Container maxW='8xl' mb='4rem' centerContent>
       <Flex
-        flexDirection={{ base: 'column-reverse', xl: 'row' }}
-        gap={'10vw'}
+        flexDirection={{ base: 'column', lg: 'row' }}
+        gap={'6vw'}
         alignItems={'center'}
       >
-        <VStack maxW={'600px'} px={'2rem'}>
+        <VStack maxW={['96vw', '84vw', '80vw', '58vw']} px={'2rem'}>
           <Heading
-            fontSize={{ base: '44px', md: '56px', lg: '76px' }}
-            fontFamily={'Playfair Display'}
-            fontWeight={'light'}
-            lineHeight={{ base: '50px', md: '80px', lg: '100px' }}
+            w='full'
+            fontSize={{ base: '34px', md: '56px', lg: '64px' }}
+            fontFamily={'Poppins'}
+            fontWeight={'600'}
+            lineHeight={{ base: '50px', md: '80px', lg: '88px' }}
           >
             {props.title}
           </Heading>
           <Text
-            py={'2rem'}
-            fontSize={['md', 'lg', 'xl']}
+            py={['1rem', '2rem']}
+            fontSize={['sm', 'lg', 'xl']}
             fontFamily={'Poppins'}
           >
             {' '}
@@ -55,7 +56,7 @@ const LayoutHOC = (props) => {
             size='lg'
             bgColor={'purple.800'}
             textColor={'white'}
-            rounded={'0'}
+            rounded={'full'}
             m={'1rem'}
             _hover={{
               bg: '#FAF5FF',
@@ -67,8 +68,10 @@ const LayoutHOC = (props) => {
             {props.button}
           </Button>
         </VStack>
-        <Box m={'2rem'}>
-          <ImageHOC img={props.img} />
+        <Box m={['4rem 0rem', '2rem']}>
+          <Box w={{ base: '70vw', md: '50vw', lg: '28vw' }}>
+            {props.children}
+          </Box>
         </Box>
       </Flex>
     </Container>

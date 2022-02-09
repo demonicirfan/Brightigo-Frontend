@@ -78,11 +78,18 @@ const Footer = () => {
               <Heading fontSize={{ base: 'xs', sm: 'md', lg: 'xl' }}>
                 Explore
               </Heading>
-              <Text>Instructors</Text>
-              <Text>Projects</Text>
-              <Text>Program Overview</Text>
-              <Text>Why Brightigo</Text>
-              <Text>Why Brightigo</Text>
+              <Link to='/'>
+                <Text>Instructors</Text>
+              </Link>
+              <Link to='/'>
+                <Text>Projects</Text>
+              </Link>
+              <Link to='/'>
+                <Text>Program Overview</Text>
+              </Link>
+              <Link to='/'>
+                <Text>Why Brightigo</Text>
+              </Link>
             </VStack>
             <VStack
               alignItems={'flex-start'}
@@ -91,10 +98,18 @@ const Footer = () => {
               <Heading fontSize={{ base: 'xs', lg: 'lg' }}>
                 Browse Pages
               </Heading>
-              <Text>Syllabus</Text>
-              <Text>FAQ</Text>
-              <Text>Blog</Text>
-              <Text>Contact Us</Text>
+              <Link to='/'>
+                <Text>Syllabus</Text>
+              </Link>
+              <Link to='/'>
+                <Text>FAQ</Text>
+              </Link>
+              <Link to='/'>
+                <Text>Blog</Text>
+              </Link>
+              <Link to='/'>
+                <Text>Contact Us</Text>
+              </Link>
             </VStack>
           </HStack>
           <HStack

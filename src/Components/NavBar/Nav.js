@@ -42,7 +42,7 @@ const NavBar = (props) => {
             <Button
               display={{ base: 'block', md: 'none' }}
               size='md'
-              rounded='none'
+              rounded='full'
               color={['primary.500', 'primary.500', 'white', 'white']}
               bg={'purple.800'}
               _hover={{
@@ -149,7 +149,7 @@ const MenuLinks = ({ isOpen, profilePicture, isAuth, isSmallScreen }) => {
             >
               <Button
                 size='lg'
-                rounded='0'
+                rounded='full'
                 color={'white'}
                 bg={'purple.800'}
                 _hover={{

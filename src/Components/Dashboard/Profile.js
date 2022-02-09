@@ -49,6 +49,7 @@ const NormalProfile = ({ editMode, setEditMode }) => {
           />
         </Box>
         <Box
+          rounded='full'
           as={'button'}
           px={'1.5rem'}
           py={'0.5rem'}

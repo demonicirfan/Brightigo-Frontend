@@ -1,147 +1,136 @@
 import React from 'react';
-import { Box, Heading, Text, Avatar, Center, VStack } from '@chakra-ui/react';
-import Slider from 'react-slick';
-import '../../Styles/slick.css';
-
-const settings = {
-  centerMode: true,
-  centerPadding: '60px',
-  dots: false,
-  infinite: true,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 3000,
-  responsive: [
-    {
-      breakpoint: 1450,
-      settings: {
-        centerMode: false,
-        centerPadding: '0px',
-        slidesToShow: 1,
-      },
-    },
-    {
-      breakpoint: 768,
-      settings: {
-        centerMode: true,
-        centerPadding: '0px',
-        slidesToShow: 1,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        centerMode: true,
-        centerPadding: '0px',
-        slidesToShow: 1,
-      },
-    },
-  ],
-};
+import {
+  Box,
+  Heading,
+  Text,
+  Avatar,
+  Center,
+  VStack,
+  HStack,
+  Image,
+  Wrap,
+} from '@chakra-ui/react';
+import t1 from '../../Images/testimonials/t1.jpg';
+import t2 from '../../Images/testimonials/t2.png';
+import t3 from '../../Images/testimonials/t3.png';
+import t4 from '../../Images/testimonials/t4.png';
+import t5 from '../../Images/testimonials/t5.png';
+import t6 from '../../Images/testimonials/t6.png';
+import t8 from '../../Images/testimonials/t8.png';
+import t9 from '../../Images/testimonials/t9.png';
 
 export default function CaptionCarousel() {
   const cards = [
     {
-      name: 'Angel Dokidis',
-      about: 'Freelancer at fiver',
-      body: 'Quality of Work – The Best.  When you say you will be there, you are there – thank you. Staff – the Best.  Everything is very clean & neat',
-      url: 'https://images.generated.photos/uKjxbHEufqSoLeZXqc9kCzDFhbx_2r555M_Zq3FGmrs/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTQ2NTc2LmpwZw.jpg',
+      name: 'Siddharth Arugula',
+      about: 'Account Manager to Associate Product',
+      about2: 'Current package 10.5 Lpa',
+      score: 210,
+      placedIn: 28,
+      educationBG: 'B.tech In Biotech',
+      body: 'I want to thank the whole Prepleaf team for the guidance they provided. And to all the Mentors, especially Priyansh, Ajay, Randheer and Drishti who helped me anytime I needed. The best thing about the Prepleaf is the People you will meet here, including batchmates who will help you prepare better and motivate you towards your goal. And Special thanks to Aman, for everything he has done for me and the students!',
+      url: t1,
     },
     {
-      name: 'Adison Aminoff',
-      about: 'CEO at Brightigo',
-      body: 'I received outstanding service and I was so fortunate to pick your laundry in the telephone book.  There is nothing you can do differently to make my experience better.',
-      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkstvneL1UVFnPpjuthvShjgYbPSrdNXIMcw&usqp=CAU',
+      name: 'Anmol Wadhwa',
+      about: 'Field Sales Executive to Product Manager at Quor',
+      about2: 'Placement Package 6.25 lpa',
+      score: 220,
+      placedIn: 18,
+      educationBG: ' BBA (IPU)',
+      body: 'I want to thank the whole Prepleaf team for the guidance they provided. And to all the Mentors, especially Priyansh, Ajay, Randheer and Drishti who helped me anytime I needed. The best thing about the Prepleaf is the People you will meet here, including batchmates who will help you prepare better and motivate you towards your goal. And Special thanks to Aman, for everything he has done for me and the students!',
+      url: t2,
     },
     {
-      name: 'Justin Calzoni',
-      about: 'Product Manager',
-      body: ' I took my duvet cover and pillow cases for the drop off service and it was quick and easy to do. Will come here again for my laundry needs.',
-      url: 'https://i1.sndcdn.com/avatars-000583246488-dhm5la-t240x240.jpg',
+      name: 'Abhinav Yadav',
+      about: 'Organic Growth Executive to Associate Product Manager at Songdew',
+      about2: 'Placement Package 7.25 LPA',
+      score: 206,
+      placedIn: 25,
+      educationBG: 'B.Tech',
+      body: 'I want to thank the whole Prepleaf team for the guidance they provided. And to all the Mentors, especially Priyansh, Ajay, Randheer and Drishti who helped me anytime I needed. The best thing about the Prepleaf is the People you will meet here, including batchmates who will help you prepare better and motivate you towards your goal. And Special thanks to Aman, for everything he has done for me and the students!',
+      url: t4,
     },
     {
-      name: 'Justin Calzoni',
-      about: 'Web Developer',
-      body: 'This place was amazing! Quality service and very clean. I took my duvet cover and pillow cases for the drop off service and it was quick and easy to do. Will come here again for my laundry needs.',
-      url: 'https://i.pinimg.com/originals/de/64/80/de64801f0275c1ab2ea5a9e2bb3ce7bc.jpg',
+      name: 'Roddsi Sarkar',
+      about: 'Java full stack developer to Product Analyst in Flyo',
+      about2: 'Placement Package 8 LPA',
+      score: 219,
+      placedIn: 16,
+      body: 'I want to thank the whole Prepleaf team for the guidance they provided. And to all the Mentors, especially Priyansh, Ajay, Randheer and Drishti who helped me anytime I needed. The best thing about the Prepleaf is the People you will meet here, including batchmates who will help you prepare better and motivate you towards your goal. And Special thanks to Aman, for everything he has done for me and the students!',
+      educationBG: 'B.Tech In electronic communication',
+      url: t3,
+    },
+    {
+      name: 'Sherin Joseph',
+      about: 'Software test engineer to Product Manager in Bajaj Finserv',
+      about2: 'Placement Package 11 LPA',
+      score: 240,
+      placedIn: 27,
+      body: 'I want to thank the whole Prepleaf team for the guidance they provided. And to all the Mentors, especially Priyansh, Ajay, Randheer and Drishti who helped me anytime I needed. The best thing about the Prepleaf is the People you will meet here, including batchmates who will help you prepare better and motivate you towards your goal. And Special thanks to Aman, for everything he has done for me and the students!',
+      educationBG: 'B.E IN COMPUTER SCIENCE',
+      url: t5,
+    },
+    {
+      name: 'Parth Agarwal',
+      about: 'Product Management Intern at Gupshup',
+      about2: 'Internship Package 30K INR',
+      score: 299,
+      placedIn: 20,
+      body: 'I want to thank the whole Prepleaf team for the guidance they provided. And to all the Mentors, especially Priyansh, Ajay, Randheer and Drishti who helped me anytime I needed. The best thing about the Prepleaf is the People you will meet here, including batchmates who will help you prepare better and motivate you towards your goal. And Special thanks to Aman, for everything he has done for me and the students!',
+      educationBG: 'B.Tech',
+      url: t6,
+    },
+    {
+      name: 'Shripad Kadekodi',
+      about:
+        'Software development engineer to Associate Product Manager in Fisdom',
+      about2: 'Internship Package 13 LPA',
+      score: 265,
+      placedIn: 21,
+      body: 'I want to thank the whole Prepleaf team for the guidance they provided. And to all the Mentors, especially Priyansh, Ajay, Randheer and Drishti who helped me anytime I needed. The best thing about the Prepleaf is the People you will meet here, including batchmates who will help you prepare better and motivate you towards your goal. And Special thanks to Aman, for everything he has done for me and the students!',
+      educationBG: 'BE Computer scienc',
+      url: t8,
+    },
+    {
+      name: 'Arun Sharma',
+      about: 'Business Analyst to Assistant Product Manager at Firstcry',
+      about2: 'Internship Package 14 LPA',
+      score: 219,
+      placedIn: 28,
+      body: 'I want to thank the whole Prepleaf team for the guidance they provided. And to all the Mentors, especially Priyansh, Ajay, Randheer and Drishti who helped me anytime I needed. The best thing about the Prepleaf is the People you will meet here, including batchmates who will help you prepare better and motivate you towards your goal. And Special thanks to Aman, for everything he has done for me and the students!',
+      educationBG: 'MBA International',
+      url: t9,
     },
   ];
 
   return (
-    <Box h={{ base: '42rem', md: '50rem' }}>
-      {/* CSS files for react-slick */}
-      <link
-        rel='stylesheet'
-        type='text/css'
-        charSet='UTF-8'
-        href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'
-      />
-      <link
-        rel='stylesheet'
-        type='text/css'
-        href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
-      />
-      <Slider {...settings}>
-        {cards.map((item, index) => (
-          <Center
-            px={{ base: '1rem', md: '2rem' }}
-            my={'10rem'}
-            key={index}
-            bg={'transparent'}
-            mx={'auto'}
-            _before={{
-              content: `""`,
-              position: 'absolute',
-              width: '180px',
-              height: '180px',
-              background: '#44337A',
-              filter: 'blur(80px)',
-              zIndex: '-1',
-              transform: 'translate(-60px,150px)',
-            }}
+    <Box my={['4rem', '8rem']}>
+      <Wrap justify='center' px='1rem' mx='auto' maxW={'9xl'} spacing='2rem'>
+        {cards.map((card) => (
+          <VStack
+            alignItems={'start'}
+            bg='white'
+            rounded='md'
+            p='2rem'
+            shadow={'xl'}
+            h='fit-content'
           >
-            <VStack
-              minH={{ base: '20rem', md: '25rem' }}
-              bg={'white'}
-              m={{ base: '1rem', lg: '2rem' }}
-              w={'90%'}
-              px={{ base: '1rem', md: '5rem' }}
-              py={'2rem'}
-            >
-              <Avatar
-                name={item.name}
-                src={item.url}
-                m={['1rem', '2rem']}
-                size={'md'}
-              />
-              <Text
-                textColor={'purple.900'}
-                textAlign={'center'}
-                px={'1rem'}
-                fontSize={{ base: '12px', lg: 'sm' }}
-              >
-                "{item.body}"
-              </Text>
-              <Heading
-                fontSize={{ base: 'xs', lg: 'md' }}
-                pt={'1rem'}
-                textColor={'purple.900'}
-              >
-                {item.name}
-              </Heading>
-              <Text
-                fontSize={{ base: '10px', lg: 'xs' }}
-                pb={'2rem'}
-                lineHeight={'2px'}
-                textColor={'purple.900'}
-              >
-                {item.about}
-              </Text>
-            </VStack>
-          </Center>
+            <HStack alignItems={'start'}>
+              <Avatar size='lg' name={card.name} src={card.url} />
+              <VStack alignItems={'start'} maxW='15rem'>
+                <Text fontSize={['md', 'xl']}>{card.name}</Text>
+                <Text fontSize={['xs', 'sm']} textColor={'purple.700'}>
+                  {card.about}
+                </Text>
+              </VStack>
+            </HStack>
+            <Text fontSize={['xs', 'md']} maxW='26rem' pt='1rem'>
+              {card.body}
+            </Text>
+          </VStack>
         ))}
-      </Slider>
+      </Wrap>
     </Box>
   );
 }

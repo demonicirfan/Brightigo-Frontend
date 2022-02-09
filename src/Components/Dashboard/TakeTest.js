@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {  Center, Box } from '@chakra-ui/react';
+import { Center, Box } from '@chakra-ui/react';
 import { isAuth } from '../../Helpers/auth';
 
 const TakeTest = () => {
@@ -14,6 +14,7 @@ const TakeTest = () => {
       alignSelf={{ base: 'start', md: 'start' }}
     >
       <Box
+        rounded='full'
         flex={1}
         alignItems={'center'}
         justifyContent={'center'}

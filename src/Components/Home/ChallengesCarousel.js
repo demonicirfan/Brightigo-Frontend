@@ -59,6 +59,7 @@ const ChallengesCarousel = () => {
         w={{ base: '80vw', md: '28rem' }}
         p={'2rem'}
         textColor={'white'}
+        rounded='xl'
         backgroundColor={'purple.800'}
         m={'auto'}
         fontSize={{ base: 'md', md: 'xl' }}

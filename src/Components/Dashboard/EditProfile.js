@@ -80,6 +80,7 @@ const EditProfile = ({ editMode, setEditMode }) => {
       >
         <ProfilePicture sendDataToParent={changeProfilePictureHandler} />
         <Box
+          rounded='full'
           w={{ base: '6rem', md: '10rem' }}
           as={'button'}
           mt={'0.5rem'}

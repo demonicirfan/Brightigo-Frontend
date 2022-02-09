@@ -14,13 +14,12 @@ const Challenges = () => {
         spacing={{ base: '6rem', md: '16rem' }}
         alignItems={'center'}
       >
-        <Box>
+        <Box >
           <Text
             w={{ base: '60vw', md: '34rem' }}
             fontSize={{ base: '3xl', md: '5xl' }}
             alignSelf={'start'}
-            fontWeight={'400'}
-            fontFamily={'Playfair Display'}
+            fontWeight={'500'}
           >
             Work on real-world product chanllenges
           </Text>
